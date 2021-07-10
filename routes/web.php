@@ -2,6 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\DoctorController;
+use App\Http\Controllers\DepartmentController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,3 +24,8 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::get('/user', [UserController::class, 'index']);
+Route::get('/doctors', [DoctorController::class, 'index'])->name('doctors');
+Route::get('/departments', [DepartmentController::class, 'index'])->name('departments');
+Route::get('/roles', [RoleController::class, 'index'])->name('roles');
